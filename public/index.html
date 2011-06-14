@@ -36,5 +36,13 @@
 	<!--[if lt IE 7 ]>
 	<script src="js/libs/dd_belatedpng.js"></script>
 	<script> DD_belatedPNG.fix('img, .png_bg');</script>
-	<![endif]--></body>
+	<![endif]-->
+	<script src="/socket.io/socket.io.js"></script>
+	<script> 
+	  var socket = new io.Socket('localhost'); 
+	  socket.connect();
+	  socket.on('connect', function(){ socket.send('test message'); }) 
+	  socket.on('message', function(msg){ alert(msg); }) 
+	</script>
+</body>
 </html>
