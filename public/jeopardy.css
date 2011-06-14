@@ -1,0 +1,156 @@
+p {
+	margin:1em 1em 0 1em;
+}
+
+div, td, th {
+	text-align: center;
+}
+
+table {
+    margin: 0 auto;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+#jeopardy td, #jeopardy th {
+    width: 150px;
+    height: 100px;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2e35fa), color-stop(1, #030486) );
+	background:-moz-linear-gradient( center top, #2e35fa 1%, #030486 100% );
+	color:white;
+	font-family:arial;
+	font-size:25px;
+	font-weight:bold;
+}
+
+#jeopardy td { 
+	background-color:blue;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2e35fa), color-stop(1, #030486) );
+	background:-moz-linear-gradient( center top, #2e35fa 1%, #030486 100% );
+	background-color:#ededed;	
+	color:#f8f86f;
+	font-family:arial;
+	font-size:40px;
+	font-weight:bold;
+	text-decoration:none;
+}	
+
+
+p {
+	margin: 1em;
+}
+
+label {
+	display:block;
+}
+
+textarea {
+	width:20em;
+	height:10em;
+}
+
+#detail,#new-board, #standby, #roster {
+    position:absolute;
+    top: 75px;
+    z-index: 2;
+    margin-left: -400px;
+    left: 50%;
+    width: 800px;
+    height: 600px;
+    font-size: 48pt;
+    border: 1px solid black;
+    background: white;
+}
+
+#new-board, #standby, #roster {
+	font-size:14pt;
+	padding:2em;
+	text-align:left;
+	height:300px;
+}
+
+#answer, #question, #detail, #play, #new-board, #standby, #roster {
+    display: none;
+}
+
+#play {
+	background-color:#F8F784;
+	padding:.2em;
+}
+#play ul{
+	margin:0 auto;
+	padding:0;
+	width:6em;
+}
+
+#name {
+	font-size:.5em;
+	text-transform:uppercase;
+	padding:0;
+	margin:0;
+}
+
+.button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:bold;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#0d1694 0%,
+		#2d39e6);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#0d1694),
+		to(#2d39e6));
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 1px solid #000000;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+}
+
+a.button {
+	text-decoration:none;
+}
+
+
+#queue {
+	font-size:.5em;
+	
+}
+
+#link-queue {
+	font-size:.3em;
+}
+
+.inline {
+	list-style-type:none;
+	
+}
+.inline li {
+	display:inline;
+}
+
+#admin li {
+	margin-right:2em;
+}
+
+/* Mobile styles */
+
+.mobile {
+	background-color:#C2C2EA;
+	margin:1em;
+}
+
