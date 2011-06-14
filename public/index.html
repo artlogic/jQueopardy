@@ -39,7 +39,7 @@
 	<![endif]-->
 	<script src="/socket.io/socket.io.js"></script>
 	<script> 
-	  var socket = new io.Socket('localhost'); 
+	  var socket = new io.Socket('stark-dawn-320.herokuapp.com'); 
 	  socket.connect();
 	  socket.on('connect', function(){ socket.send('test message'); }) 
 	  socket.on('message', function(msg){ alert(msg); }) 
