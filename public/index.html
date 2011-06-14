@@ -41,8 +41,8 @@
 	<script> 
 	  var socket = new io.Socket('stark-dawn-320.herokuapp.com'); 
 	  socket.connect();
-	  socket.on('connect', function(){ socket.send('test message'); }) 
-	  socket.on('message', function(msg){ alert(msg); }) 
+	  socket.on('connect', function(){ console.log('connected'); socket.send('test message'); }) 
+	  socket.on('message', function(msg){ console.log(msg); }) 
 	</script>
 </body>
 </html>
