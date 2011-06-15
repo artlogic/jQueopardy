@@ -5,85 +5,86 @@
 <link rel="stylesheet" type="text/css" href="jeopardy.css" />
 </head>
 <body>
-<div id="game">
-</div>
-<div id="admin">
-    <ul class="inline">
-        <li><a href="#" id="link-new-board">Load new board</a></li>
-        <li><a href="#" id="link-standby">Standby mode</a></li>
-        <li><a href="#" id="link-roster">Roster</a></li>
-    </ul>
-</div>
-
-
-<div id="new-board">
-	<form action="#" method="#">
-         <fieldset><legend>Choose game</legend>
-            <select>
-                <option>Game 1</option>
-                <option>Game 2</option>
-            </select>
-            <input type="submit" value="Submit"/>
-        </fieldset>
-    </form> 
-  
-</div>
-<div id="standby">
-	<form action="#" method="#">
-         <fieldset><legend>Standby mode</legend>
-			<label>Enter message</label>
-            <textarea></textarea>
-            <input type="submit" value="Submit"/>
-        </fieldset>
-    </form> 
-
-</div>
-
-<div id="roster">
-	<table>
-        <thead>
-            <tr>
-                <th>Names</th>
-                <th>Scores</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John</td>
-                <td>$200</td>
-            </tr> 
-        </tbody>
-    </table>
-</div>
-
-
-<div id="detail">
-
-    <div id="play">
-            <p id="name">John</p>
-            <ul class="inline">
-                <li><a href="#" id="correct" class="button">Correct</a></li>
-                <li><a href="#" id="incorrect" class="button">Incorrect</a></li>
-                <li><a href="#" id="link-queue">Queue</a></li>
-            </ul> 
-            <div id="queue">
-                <ol>
-                    <li>Jane</li>
-                    <li>John</li>
-                    <li>Jack</li>
-                    <li>Julie</li>
-                 </ol>
-			</div>  
-    </div>     
-    <p id="answer"></p>
-    <p id="question"></p>
-    
-    <div id="open">
-    	<a href="#" class="button">Open for answers</a>
+<div id="wrapper-game">
+    <div id="game">
+    </div>
+    <div id="admin">
+        <ul class="inline">
+            <li><a href="#" id="link-new-board">Load new board</a></li>
+            <li><a href="#" id="link-standby">Standby mode</a></li>
+            <li><a href="#" id="link-roster">Roster</a></li>
+        </ul>
     </div>
     
- 
-</div>
+    
+    <div id="new-board">
+        <form action="#" method="#">
+             <fieldset><legend>Choose game</legend>
+                <select>
+                    <option>Game 1</option>
+                    <option>Game 2</option>
+                </select>
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form> 
+      
+    </div>
+    <div id="standby">
+        <form action="#" method="#">
+             <fieldset><legend>Standby mode</legend>
+                <label>Enter message</label>
+                <textarea></textarea>
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form> 
+    
+    </div>
+    
+    <div id="roster">
+        <table>
+            <thead>
+                <tr>
+                    <th>Names</th>
+                    <th>Scores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>$200</td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <div id="detail">
+    
+        <div id="play">
+                <p id="name">John</p>
+                <ul class="inline">
+                    <li><a href="#" id="correct" class="button">Correct</a></li>
+                    <li><a href="#" id="incorrect" class="button">Incorrect</a></li>
+                </ul> 
+                <div id="queue">
+                    <ol>
+                        <li>Jane</li>
+                        <li>John</li>
+                        <li>Jack</li>
+                        <li>Julie</li>
+                     </ol>
+                </div>  
+        </div>     
+        <p id="answer"></p>
+        <p id="question"></p>
+        
+        <div id="open">
+            <a href="#" class="button">Open for answers</a>
+        </div>
+        
+     
+    </div>
+</div><!-- end wrapper -->    
 
 <script type="text/javascript" src="jquery-1.5.min.js"></script>
 <script type="text/javascript" src="gamedata.js"></script>
