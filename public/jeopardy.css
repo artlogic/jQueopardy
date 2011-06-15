@@ -149,8 +149,29 @@ a.button {
 
 /* Mobile styles */
 
-.mobile {
-	background-color:#C2C2EA;
-	margin:1em;
+#wrapper-mobile {
+	background-color:#fff;
 }
+
+#wrapper-mobile h1 {
+	background-color:#050891;
+	color:#F8F86E;
+	font-family:Arial, Helvetica, sans-serif;
+	padding:.5em;	
+}
+
+.mobile {
+	background-color:#E6E6F7;
+	padding:0 0 1em 0;
+}
+
+#wrapper-mobile fieldset {
+	text-align:left;
+	margin:.5em;
+}
+
+
+
+
+
 
