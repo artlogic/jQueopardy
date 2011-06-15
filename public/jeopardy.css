@@ -58,7 +58,7 @@ textarea {
     margin-left: -400px;
     left: 50%;
     width: 800px;
-    height: 600px;
+    min-height: 600px;
     font-size: 48pt;
     border: 1px solid black;
     background: white;
@@ -68,7 +68,7 @@ textarea {
 	font-size:14pt;
 	padding:2em;
 	text-align:left;
-	height:300px;
+	min-height:300px;
 }
 
 #answer, #question, #detail, #play, #new-board, #standby, #roster {
