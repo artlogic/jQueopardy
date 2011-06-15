@@ -77,7 +77,7 @@
 		
 		hideDivs : function () {
 			$('#wrapper-mobile').find('div').hide();
-			$('#answer').show();
+			$('#sign-in').show();
 		},
 		
 		clickEvents : function () {
@@ -97,7 +97,7 @@
 			});
 			
 		
-			//whole div
+			//whole div click
 			$('#answer').click(function(){
 				$('#answer').hide();
 				$('#your-up').show();				
@@ -124,6 +124,7 @@ $(function() {
 	}
 	
 	if ($('#wrapper-mobile').length > 0) {
+		//comment out mobile.hideDivs() to see all divs
 		mobile.hideDivs();
 		mobile.clickEvents();
 	}
