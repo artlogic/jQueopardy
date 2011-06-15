@@ -96,6 +96,13 @@
 	
 			});
 			
+		
+			//whole div
+			$('#answer').click(function(){
+				$('#answer').hide();
+				$('#your-up').show();				
+			});
+			
 			$('#answer-form').submit(function(e) {
 				e.preventDefault();
 				$('#answer').hide();
