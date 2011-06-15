@@ -111,7 +111,37 @@
 			});
 		}
 	
-	};
+	},
+	
+	readableList = {
+		
+		buildList : function () { 
+			var i, j;
+			var answer;
+			var $list = $('<dl />');
+
+		
+			// build the game table
+			for (i = 0; i < gamedata['categories'].length; i++) {
+				$list += '<h2>' + gamedata['categories'][i] + '</h2>';
+			}
+			
+	
+			
+			for (i = 0; i < gamedata['values'].length; i++) {
+	
+					for (j = 0; j < gamedata['categories'].length; j++) {
+						$list += '<dd id="id' + j + 'x' + i + '">' + gamedata['values'][i] + '</dd>';
+					}
+				
+			}
+			
+			
+			$('#readable-list').append($list);
+		},
+		
+		
+	}
 	
 		
 		
@@ -129,5 +159,8 @@ $(function() {
 		mobile.clickEvents();
 	}
 	
-
+	if ($('#wrapper-list').length > 0) {
+		readableList.buildList();
+		
+	}	
 });
