@@ -151,6 +151,7 @@ a.button {
 
 #wrapper-mobile {
 	background-color:#fff;
+	font-size:1.5em;
 }
 
 #wrapper-mobile h1 {
@@ -168,8 +169,16 @@ a.button {
 #wrapper-mobile fieldset {
 	text-align:left;
 	margin:.5em;
+	font-family:arial;
 }
 
+
+#wrapper-mobile input {
+	width:100%;
+	height:3em;
+	margin:0 0 1em 0;
+	font-size:2em;
+	}
 
 
 

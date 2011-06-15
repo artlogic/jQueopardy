@@ -125,7 +125,7 @@ $(function() {
 	
 	if ($('#wrapper-mobile').length > 0) {
 		//comment out mobile.hideDivs() to see all divs
-		mobile.hideDivs();
+		//mobile.hideDivs();
 		mobile.clickEvents();
 	}
 	
