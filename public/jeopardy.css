@@ -125,6 +125,30 @@ a.button {
 	text-decoration:none;
 }
 
+#correct {
+	background: -moz-linear-gradient(
+		top,
+		#4CA55F 0%,
+		#1E7030);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#4CA55F),
+		to(#1E7030));
+	margin-right:2em;
+}
+
+
+#incorrect {
+	background: -moz-linear-gradient(
+		top,
+		#DB818B 0%,
+		#D60820);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#DB818B),
+		to(#D60820));
+	margin-right:2em;
+}
 
 #queue {
 	font-size:.5em;
