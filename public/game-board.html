@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>Jeopardy!</title>
+<title>jQueopardy!</title>
 <link rel="stylesheet" type="text/css" href="jeopardy.css" />
 </head>
 <body>
@@ -10,70 +10,23 @@
     </div>
     <div id="admin">
         <ul class="inline">
-            <li><a href="#" id="link-new-board">Load new board</a></li>
             <li><a href="#" id="link-roster">Roster</a></li>
         </ul>
     </div>
-    
-    
-    <div id="new-board">
-        <form action="#" method="#">
-             <fieldset><legend>Choose game</legend>
-                <select>
-                    <option>Game 1</option>
-                    <option>Game 2</option>
-                </select>
-                <input type="submit" value="Submit"/>
-            </fieldset>
-        </form> 
-      
-    </div>
-    <div id="standby">
-        <form action="#" method="#">
-             <fieldset><legend>Standby mode</legend>
-                <label>Enter message</label>
-                <textarea></textarea>
-                <input type="submit" value="Submit"/>
-            </fieldset>
-        </form> 
-    
-    </div>
-    
+
     <div id="roster">
-        <table>
-            <thead>
-                <tr>
-                    <th>Names</th>
-                    <th>Scores</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>$200</td>
-                </tr> 
-            </tbody>
-        </table>
-    </div>
-    
+      <p>Loading roster...</p>
+    </div>    
     
     <div id="detail">
     
         <div id="play">
-                <p id="name">John</p>
+                <p id="name">Waiting...</p>
                 <ul class="inline">
                     <li><a href="#" id="correct" class="button">Right</a></li>
                     <li><a href="#" id="incorrect" class="button">Wrong</a></li>
                 </ul> 
-                <div id="queue">
-                    <ol>
-                        <li>Jane</li>
-                        <li>John</li>
-                        <li>Jack</li>
-                        <li>Julie</li>
-                     </ol>
-                </div> 
-                 <a href="#" class="no-queue">No one in queue</a> 
+                <a href="#" id="no-queue" class="no-queue">No one in queue</a> 
         </div> 
             
         <p id="answer"></p>
@@ -81,15 +34,28 @@
         
         <div id="open">
             <a href="#" class="button">Open for answers</a>
-           
         </div>
-        
      
     </div>
 </div><!-- end wrapper -->    
 
 <script type="text/javascript" src="jquery-1.5.min.js"></script>
-<script type="text/javascript" src="gamedata.js"></script>
+<script type="text/javascript" src="/nowjs/now.js"></script>
+<script type="text/javascript">
+// ugly hack to make node.js modules work in the browser
+var games = {};
+var exports = {};
+</script>
+<script type="text/javascript" src="game1.js"></script>
+<script type="text/javascript">
+// ugly hack to make node.js modules work in the browser
+games[exports.gameid] = exports.gamedata;
+</script>
+<script type="text/javascript" src="game2.js"></script>
+<script type="text/javascript">
+// ugly hack to make node.js modules work in the browser
+games[exports.gameid] = exports.gamedata;
+</script>
 <script type="text/javascript" src="jeopardy.js"></script>
 </body>
 </html>
