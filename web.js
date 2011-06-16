@@ -38,19 +38,6 @@ everyone.now.currentUser = undefined;
 // global state
 var users = {};
 var queue = [];
-var hostClientId;  // might not need this
-var standbyMsg = "Please stand by.";
-var controlUser;
-
-// might not need these
-// Possible states:
-// 0 = Category Choice
-// 1 = Display "Answer"
-// 2 = Answerable
-// 3 = Display "Question"
-// 4 = Stand By
-var state = 4  // default to standby
-
 
 // utility functions
 function clientIdToName(clientId) {
@@ -88,12 +75,6 @@ everyone.now.logout = function(fn) {
   fn();
 }
 
-// normally state changes are broadcast to all players, however the
-// player may request a state update after login
-everyone.now.sendState = function(fn) {
-  // TODO: decide what data to call fn with
-}
-
 everyone.now.answer = function() {
   queue.push(this.user.clientId);
   everyone.now.queueChange(nameQueue());
@@ -112,7 +93,9 @@ everyone.now.correct = function() {
   nowjs.getClient(queue[0], function () {
     this.now.updateScore(newScore);  // this might not work
   });
-  everyone.now.stateChoose();
+  everyone.now.currentUser = clientIdToName(queue[0]);
+  queue = [];
+  everyone.now.stateChoose(everyone.now.games[currentGameId].gamedata.qadata[everyone.now.currentQuestion][1]);
 }
 
 everyone.now.incorrect = function() {
@@ -129,7 +112,7 @@ everyone.now.incorrect = function() {
 
 // only called if no one rings in
 everyone.now.show = function() {
-  everyone.now.stateChoose();
+  everyone.now.stateChoose(everyone.now.games[currentGameId].gamedata.qadata[everyone.now.currentQuestion][1]);
 }
 
 everyone.now.choose = function(qid) {
@@ -137,16 +120,13 @@ everyone.now.choose = function(qid) {
   everyone.now.stateChosen(everyone.now.games[currentGameId].gamedata.qadata[qid][0]);
 }
 
-everyone.now.standby = function(msg) {
-  standbyMsg = msg;
-  everyone.now.stateStandby(msg);
-}
+everyone.now.roster = function(fn) {
+  var roster = [];
 
-// might not need this
-everyone.now.hostId = function() {
-  // some security here might be in order
-  hostClientId = this.user.clientId;
-}
+  for (var u in users) {
+    roster.push({name: users[u].name, score: users[u].score});
+  }
+  roster.sort(function(a, b) { return (b.score - a.score); });
 
-everyone.now.roster = function() {
+  fn(roster);
 }
