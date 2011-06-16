@@ -1,9 +1,11 @@
+var answer = false;
 	var gameBoard = { 
 	
 		buildTable : function () { 
-			var i, j;
-			var answer;
-			var table = '<table id="jeopardy"><thead><tr>'
+		  var i, j;
+		  var answer;
+		  var table = '<table id="jeopardy"><thead><tr>'
+		  var gamedata = games[now.currentGame];
 		
 			// build the game table
 			for (i = 0; i < gamedata['categories'].length; i++) {
@@ -24,12 +26,14 @@
 		},
 		
 		clickEvents : function () {
-	
+		  var gamedata = games[now.currentGame];
+
 			// td click event
 			$('td').live('click', function() {
 				if ($(this).text() !== 'X') {
 					$(this).text('X');
 					var qa = gamedata['qadata'][$(this).attr('id')];
+				  now.choose(qa);
 					$('#answer').text(qa[0]).show();
 					$('#question').text(qa[1]).append('<p><a href="#" id="done" class="button">Done</a></p>');
 					$('#detail').fadeIn();
@@ -40,11 +44,23 @@
 			
 			
 			$('#open').click(function() {
+			  $('#name').html('Waiting...');
+			  now.openForAnswers();
 				$(this).hide();
 				$('#play').show();
-				$('#queue').hide();
 			});
-			$('#correct').click(function() {	
+			$('#correct').click(function() {
+			  now.incorrect();
+			});
+			$('#correct').click(function() {
+			  now.correct();
+				$('#play').hide();
+				$('#answer').hide();
+				$('#question').show();
+				answer = false;
+			});
+			$('#no-queue').click(function() {
+			  now.show();
 				$('#play').hide();
 				$('#answer').hide();
 				$('#question').show();
@@ -57,17 +73,24 @@
 				
 				$(this).remove();
 			});
-			
-			$('#link-standby').click(function() {
-				$('#standby').toggle();
-			});
-		
+					
 			$('#link-new-board').click(function() {
 				$('#new-board').toggle();
 			});
 			
-			$('#link-roster').click(function() {
-				$('#roster').toggle();
+			$('#link-roster').toggle(function() {
+			  $('#roster').show();
+			  now.roster(function(roster) {
+			    var html = '<table><tr><td>Name</td><td>Score</td></tr>'
+			    for (var i = 0; i < roster.length; i++) {
+			      html += '<tr><td>' + roster[i].name + '</td><td>$' + roster[i].score + '</td></tr>';
+			    }
+			    html += '</table>';
+			    $('#roster').html(html);
+			  });
+			}, function() {
+			  $('#roster').hide();
+			  $('#roster').html('<p>Loading roster...</p>');
 			});
 		}
 	}, 
@@ -111,44 +134,14 @@
 			});
 		}
 	
-	},
-	
-	readableList = {
+	};
 		
-		buildList : function () { 
-			var i, j;
-			var answer;
-			var $list = $('<dl />');
-
-		
-			// build the game table
-			for (i = 0; i < gamedata['categories'].length; i++) {
-				$list += '<h2>' + gamedata['categories'][i] + '</h2>';
-			}
-			
-	
-			
-			for (i = 0; i < gamedata['values'].length; i++) {
-	
-					for (j = 0; j < gamedata['categories'].length; j++) {
-						$list += '<dd id="id' + j + 'x' + i + '">' + gamedata['values'][i] + '</dd>';
-					}
-				
-			}
-			
-			
-			$('#readable-list').append($list);
-		},
-		
-		
-	}
-	
-		
-		
-		
-$(function() {	
-	
+now.ready(function() {	
 	if ($('#wrapper-game').length > 0) {
+	  now.queueChange = function(queue) {
+	    console.log('queue change', queue);
+	    $('#name').html(queue[0]);
+	  }
 		gameBoard.buildTable();
 		gameBoard.clickEvents();
 	}
