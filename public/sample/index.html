@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sample page</title>
+
+<style>
+	#code {
+		background-color:#FFF2CC;
+	}
+</style>
+</head>
+
+<body>
+<h1 id="header">Sample page</h1>
+
+<h2 id="markup">Markup</h2>
+<div id="first-div">
+
+    <p id="bacon" class="doe">
+    Bacon ipsum dolor sit amet venison pig shoulder pastrami. <em>Boudin pancetta meatball</em>, shoulder jerky pork loin short loin ball tip brisket venison chuck. Ball tip sirloin headcheese, flank beef ribs pastrami jerky brisket short ribs pork loin meatball fatback strip steak turkey rump. T-bone brisket strip steak, flank ribeye cow pancetta ham headcheese beef. Turkey shankle ham hock pork belly t-bone, shoulder meatball flank chuck pork loin. Beef ribs cow tongue, shankle short ribs ball tip sausage andouille pastrami short loin beef chuck. Pork chop cow ribeye, sirloin shoulder shankle turkey sausage hamburger brisket bresaola pig.
+    </p>
+    <p id="sirloin" class="doe">
+    Sirloin brisket boudin, pig tongue beef pastrami meatball biltong. Pork loin tenderloin rump tongue ball tip. Sirloin tail turkey, tenderloin meatloaf rump spare ribs ham hock strip steak. Pancetta bresaola beef ribs headcheese, hamburger andouille tri-tip ham hock sirloin turkey strip steak tenderloin. Meatball hamburger tenderloin bresaola, ribeye boudin pork belly pork chop andouille short loin chuck. Headcheese ham hock strip steak, spare ribs shankle drumstick tail pork pig venison flank sausage jerky boudin ball tip. Short loin meatball brisket turkey boudin.
+    </p>
+    <p id="cow" class="rae">
+    Cow shank jowl headcheese beef bresaola <em>ham hock pork belly pork loin</em>. Pancetta ball tip boudin, meatball swine fatback shankle jowl pig brisket pork loin tenderloin tongue. Rump meatball ground round, beef ham short ribs andouille drumstick pastrami salami swine tail sausage short loin corned beef. Flank fatback pancetta beef, andouille jowl beef ribs drumstick chuck sirloin chicken sausage jerky shank spare ribs. Brisket bresaola beef, tri-tip turkey pork belly jerky pancetta jowl. Chicken short loin t-bone, salami ball tip shoulder ham hock tri-tip rump pork meatball beef ribs. T-bone spare ribs hamburger bresaola, strip steak swine ribeye.
+    </p>
+
+</div>
+
+<h2>Sample code</h2>
+<p>Insert these in your debug console to test</p>
+
+<pre id="code">
+    console.log($('p').filter('.doe').length + ' paragraphs with the class "doe"');
+    console.log($('p').find('em').length + ' phrases that use the emphasis tag');
+</pre>
+
+
+<script src="jquery.min.js"></script> 
+
+</body>
+</html>
