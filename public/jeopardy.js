@@ -51,7 +51,7 @@ var name;
 				$(this).hide();
 				$('#play').show();
 			});
-			$('#correct').click(function() {
+			$('#incorrect').click(function() {
 			  now.incorrect();
 			});
 			$('#correct').click(function() {
@@ -135,7 +135,7 @@ var name;
 			  $('#in-line').show();					
 			});
 
-		  $('#logout').click(function(e) {
+		  $('.logout').click(function(e) {
 		    e.preventDefault();
 		    now.logout(function() {
 		      window.location.reload(true);
@@ -191,7 +191,7 @@ now.ready(function() {
 	      $('#control').hide();
 	    }
 
-	    $('.answer-text').html(q);
+	    $('.question-text').html(q);
 
 	    mobile.hideDivs();
 	    $('#board-control').show();

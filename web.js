@@ -57,10 +57,19 @@ function nameQueue() {
   return nq;
 }
 
+function nameExists(name) {
+  for (var u in users) {
+    if (users[u].name.toLowerCase() === name.toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // player API
 everyone.now.login = function(name, fn) {
   console.log('login', name);
-  if (clientIdToName(this.user.clientId) === name) {
+  if (nameExists(name)) {
     fn(false);
   } else {
     users[this.user.clientId] = {'name': name, 'score': 0};
@@ -96,7 +105,7 @@ everyone.now.openForAnswers = function() {
 everyone.now.correct = function() {
   console.log('correct');
   if (queue.length > 0) {
-    var qvid = everyone.now.currentQuestion.substring(2, 3);
+    var qvid = everyone.now.currentQuestion.substring(4);
     var strValue = everyone.now.games[everyone.now.currentGame].values[qvid];
     var value = parseInt(strValue.substring(1));
     var newScore = users[queue[0]].score += value;
@@ -111,7 +120,7 @@ everyone.now.correct = function() {
 
 everyone.now.incorrect = function() {
   console.log('incorrect');
-  var qvid = everyone.now.currentQuestion.substring(2, 3);
+  var qvid = everyone.now.currentQuestion.substring(4);
   var strValue = everyone.now.games[everyone.now.currentGame].values[qvid];
   var value = parseInt(strValue.substring(1));
   var newScore = users[queue[0]].score -= value;
