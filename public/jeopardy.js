@@ -1,5 +1,6 @@
 var init = false;
 var answer = false;
+var name;
 	var gameBoard = { 
 	
 		buildTable : function () { 
@@ -101,16 +102,23 @@ var answer = false;
 		
 		hideDivs : function () {
 			$('#wrapper-mobile').find('div').hide();
-			$('#sign-in').show();
+//			$('#sign-in').show();
 		},
 		
 		clickEvents : function () {
 			$('#sign-in-form').submit(function(e) {
-				e.preventDefault();
-				$('#sign-in').hide();
-				$('#standing-by').show();
-				
-				//or if already used $('#try-again').show();
+			  e.preventDefault();
+			  name = $('#name').val();
+			  now.login(name, function(loggedIn) {
+			    if (loggedIn === true) {
+			      $('.name').html(name);
+			      mobile.hideDivs();
+			      $('#control').hide();
+			      $('#board-control').show();
+			    } else {
+			      alert('Name already taken.');
+			    }
+			  });				
 			});
 			
 			$('#try-again-form').submit(function(e) {
@@ -119,20 +127,19 @@ var answer = false;
 				$('#standing-by').show();
 	
 			});
-			
 		
-			//whole div click
-			$('#answer').click(function(){
-				$('#answer').hide();
-				$('#your-up').show();				
-			});
-			
 			$('#answer-form').submit(function(e) {
-				e.preventDefault();
-				$('#answer').hide();
-				$('#your-up').show();
-	
+			  e.preventDefault();
+			  now.answer();
+			  mobile.hideDivs();
+			  $('#in-line').show();					
 			});
+
+		  $('#logout').click(function() {
+		    now.logout(function() {
+		      location.reload(true);
+		    });
+		  });
 		}
 	
 	};
@@ -156,9 +163,51 @@ now.ready(function() {
 	}
 	
 	if ($('#wrapper-mobile').length > 0 && !init) {
-		//comment out mobile.hideDivs() to see all divs
-		mobile.hideDivs();
-		mobile.clickEvents();
+	  now.queueChange = function(queue) {
+	    console.log('queue change', queue);
+
+	    if (name === queue[0]) {
+	      mobile.hideDivs();
+	      $('#your-up').show();
+	    }
+	  };
+
+	  now.stateOpenForAnswers = function() { 
+	    console.log('stateOpenForAnswers'); 
+	    $('#go').removeAttr('disabled');
+	  };
+
+	  now.updateScore = function(s) {
+	    console.log('updateScore', s);
+	    $('.score').html(s);
+	  };
+
+	  now.stateChoose = function(q) {
+	    console.log('stateChoose', q);
+	    if (name === now.currentUser) {
+	      $('#control').show();
+	    } else {
+	      $('#control').hide();
+	    }
+
+	    $('.answer-text').html(q);
+
+	    mobile.hideDivs();
+	    $('#board-control').show();
+	  };
+
+	  now.stateChosen = function(a) { 
+	    console.log('stateChosen', a);	    
+	    $('#go').attr('disabled', 'disabled');
+	    $('.answer-text').html(a);
+	    mobile.hideDivs();
+	    $('#answer').show()
+	  };
+
+	  //comment out mobile.hideDivs() to see all divs
+	  mobile.hideDivs();
+	  $('#sign-in').show();
+	  mobile.clickEvents();
 	  init = true;
 	}
 });
