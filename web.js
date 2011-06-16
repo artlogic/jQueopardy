@@ -32,7 +32,7 @@ everyone.now.games = {};
 everyone.now.games[game1.gameid] = game1.gamedata;
 everyone.now.games[game2.gameid] = game2.gamedata;
 everyone.now.currentGame = game1.gameid;
-everyone.now.currentQuestion = undefined;
+everyone.now.currentQuestion = undefined;  // why now?
 everyone.now.currentUser = undefined;
 
 // global state
@@ -105,10 +105,26 @@ everyone.now.openForAnswers = function() {
 }
 
 everyone.now.correct = function() {
+  var qvid = everyone.now.currentQuestion.substring(2, 3);
+  var strValue = everyone.now.games[everyone.now.currentGameId].gamedata.values[qvid];
+  var value = parseInt(strValue.substring(1));
+  var newScore = users[queue[0]].score += value;
+  nowjs.getClient(queue[0], function () {
+    this.now.updateScore(newScore);  // this might not work
+  });
   everyone.now.stateChoose();
 }
 
 everyone.now.incorrect = function() {
+  var qvid = everyone.now.currentQuestion.substring(2, 3);
+  var strValue = everyone.now.games[everyone.now.currentGameId].gamedata.values[qvid];
+  var value = parseInt(strValue.substring(1));
+  var newScore = users[queue[0]].score -= value;
+  nowjs.getClient(queue[0], function () {
+    this.now.updateScore(newScore);  // this might not work
+  });
+  queue.shift();
+  everyone.now.queueChange(nameQueue());
 }
 
 // only called if no one rings in
@@ -117,7 +133,8 @@ everyone.now.show = function() {
 }
 
 everyone.now.choose = function(qid) {
-  everyone.now.stateChosen(games[currentGameId].gamedata.qadata[qid][0]);
+  everyone.now.currentQuestion = qid;
+  everyone.now.stateChosen(everyone.now.games[currentGameId].gamedata.qadata[qid][0]);
 }
 
 everyone.now.standby = function(msg) {
