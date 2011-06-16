@@ -95,22 +95,24 @@ everyone.now.openForAnswers = function() {
 
 everyone.now.correct = function() {
   console.log('correct');
-  var qvid = everyone.now.currentQuestion.substring(2, 3);
-  var strValue = everyone.now.games[everyone.now.currentGameId].gamedata.values[qvid];
-  var value = parseInt(strValue.substring(1));
-  var newScore = users[queue[0]].score += value;
-  nowjs.getClient(queue[0], function () {
-    this.now.updateScore(newScore);  // this might not work
-  });
-  everyone.now.currentUser = clientIdToName(queue[0]);
-  queue = [];
-  everyone.now.stateChoose(everyone.now.games[currentGameId].gamedata.qadata[everyone.now.currentQuestion][1]);
+  if (queue.length > 0) {
+    var qvid = everyone.now.currentQuestion.substring(2, 3);
+    var strValue = everyone.now.games[everyone.now.currentGame].values[qvid];
+    var value = parseInt(strValue.substring(1));
+    var newScore = users[queue[0]].score += value;
+    nowjs.getClient(queue[0], function () {
+      this.now.updateScore(newScore);  // this might not work
+    });
+    everyone.now.currentUser = clientIdToName(queue[0]);
+    queue = [];
+  }
+  everyone.now.stateChoose(everyone.now.games[everyone.now.currentGame].qadata[everyone.now.currentQuestion][1]);
 }
 
 everyone.now.incorrect = function() {
   console.log('incorrect');
   var qvid = everyone.now.currentQuestion.substring(2, 3);
-  var strValue = everyone.now.games[everyone.now.currentGameId].gamedata.values[qvid];
+  var strValue = everyone.now.games[everyone.now.currentGame].values[qvid];
   var value = parseInt(strValue.substring(1));
   var newScore = users[queue[0]].score -= value;
   nowjs.getClient(queue[0], function () {
@@ -123,17 +125,17 @@ everyone.now.incorrect = function() {
 // only called if no one rings in
 everyone.now.show = function() {
   console.log('show');
-  everyone.now.stateChoose(everyone.now.games[currentGameId].gamedata.qadata[everyone.now.currentQuestion][1]);
+  everyone.now.stateChoose(everyone.now.games[everyone.now.currentGame].qadata[everyone.now.currentQuestion][1]);
 }
 
 everyone.now.choose = function(qid) {
   console.log('choose', qid);
   everyone.now.currentQuestion = qid;
-  everyone.now.stateChosen(everyone.now.games[currentGameId].gamedata.qadata[qid][0]);
+  everyone.now.stateChosen(everyone.now.games[everyone.now.currentGame].qadata[qid][0]);
 }
 
 everyone.now.roster = function(fn) {
-  console.log('roster');
+  console.log('roster', this.user.clientId);
   var roster = [];
 
   for (var u in users) {

@@ -1,3 +1,4 @@
+var init = false;
 var answer = false;
 	var gameBoard = { 
 	
@@ -33,7 +34,7 @@ var answer = false;
 				if ($(this).text() !== 'X') {
 					$(this).text('X');
 					var qa = gamedata['qadata'][$(this).attr('id')];
-				  now.choose(qa);
+				  now.choose($(this).attr('id'));
 					$('#answer').text(qa[0]).show();
 					$('#question').text(qa[1]).append('<p><a href="#" id="done" class="button">Done</a></p>');
 					$('#detail').fadeIn();
@@ -137,23 +138,27 @@ var answer = false;
 	};
 		
 now.ready(function() {	
-	if ($('#wrapper-game').length > 0) {
+	if ($('#wrapper-game').length > 0 && !init) {
 	  now.queueChange = function(queue) {
 	    console.log('queue change', queue);
 	    $('#name').html(queue[0]);
-	  }
-		gameBoard.buildTable();
-		gameBoard.clickEvents();
+	  };
+
+	  // fake methods so things don't fall apart
+	  now.stateOpenForAnswers = function() { console.log('stateOpenForAnswers'); };
+	  now.updateScore = function(s) { console.log('updateScore', s); };
+	  now.stateChoose = function(q) { console.log('stateChoose', q); };
+	  now.stateChosen = function(a) { console.log('stateChosen', a); };
+
+	  gameBoard.buildTable();
+	  gameBoard.clickEvents();
+	  init = true;
 	}
 	
-	if ($('#wrapper-mobile').length > 0) {
+	if ($('#wrapper-mobile').length > 0 && !init) {
 		//comment out mobile.hideDivs() to see all divs
 		mobile.hideDivs();
 		mobile.clickEvents();
+	  init = true;
 	}
-	
-	if ($('#wrapper-list').length > 0) {
-		readableList.buildList();
-		
-	}	
 });
