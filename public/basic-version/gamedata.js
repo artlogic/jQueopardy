@@ -16,7 +16,7 @@ var gamedata = {'categories': ['The Heart of jQueriness by J. Conrad', 'Keeping 
 		       'id2x2': ['Javascript Object Notation is usually referred to by this acronym.', 'What is JSON?'],
 		       'id2x3': ['$.get and $.post are also known as these.', 'What are ajax convenience methods?'],
 		       'id2x4': ['This parameter is required when using the jQuery ajax or convenience method.', 'What is "url"?'],
-		       'id3x0': ['These character can be used for grouping within JavaScript.', 'What are parenthesis?'],
+		       'id3x0': ['These characters can be used to indicate grouping within JavaScript.', 'What are parenthesis?'],
 		       'id3x1': ['This HTML element is used to denote JavaScript.', 'What is the script element?'],
 		       'id3x2': ['This operator tests for equality without type coersion.', 'What is the === operator?'],
 		       'id3x3': ['JavaScript objects are collections of these.', 'What are key value pairs?'],
@@ -25,11 +25,12 @@ var gamedata = {'categories': ['The Heart of jQueriness by J. Conrad', 'Keeping 
 		       'id4x1': ['This method can be used to trigger an event when the page is finished loading.', 'What is the onload method?'],
 		       'id4x2': ['This method returns the first element with a specified ID.', 'What is the getElementById method?'],
 		       'id4x3': ['Instead of using getElementsByTagName, you can use this jQuery method to match an element.', 'What is .find()?'],
-		       'id4x4': ['This jQuery method gets the immediately preceding sibling of each element in the set of matched elements.', 'What is .prev()?'],
+		       'id4x4': ['This jQuery method gets the immediately preceding sibling of each element in a set of matched elements.', 'What is .prev()?'],
 		       'id5x0': ['A fast and concise JavaScript library that simplifies HTML document traversing, event handling, and Ajax interaction.', 'What is jQuery?'],
 		       'id5x1': ['This language is referred to as the scripting language of the web.', 'What is JavaScript?'],
 		       'id5x2': ['These two languages have little in common, except their name.', 'What are Java and JavaScript?'],
-		       'id5x3': ['Ajax calls are typically made using these two data structures: XML and this.', 'What is JSON?'],
+		       'id5x3': ['Ajax calls are typically made using two data structures: XML and this.', 'What is JSON?'],
 		       'id5x4': ['This library sites on top of the jQuery library and provides support for widgets and animation.', 'What is jQuery UI?']
+
 		      }
 	   };
