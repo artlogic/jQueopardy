@@ -135,9 +135,10 @@ var name;
 			  $('#in-line').show();					
 			});
 
-		  $('#logout').click(function() {
+		  $('#logout').click(function(e) {
+		    e.preventDefault();
 		    now.logout(function() {
-		      location.reload(true);
+		      window.location.reload(true);
 		    });
 		  });
 		}
