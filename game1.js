@@ -1,4 +1,6 @@
-var gamedata = {'categories': ['Operators', 'Conditional Code', 'Loops',
+exports.gameid = 'jQueopardy';
+
+exports.gamedata = {'categories': ['Operators', 'Conditional Code', 'Loops',
 			   'Reserved Words', 'Objects', 'Functions'],
 	    'values': ['$200', '$400', '$600', '$800', '$1000'],
 	    'qadata': {'id0x0': ['This operator will evaluate to true if the first operand is less than the second operand.' , 'What is the less than (<) operator?'],
