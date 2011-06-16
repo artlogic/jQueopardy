@@ -149,7 +149,11 @@ now.ready(function() {
 	if ($('#wrapper-game').length > 0 && !init) {
 	  now.queueChange = function(queue) {
 	    console.log('queue change', queue);
-	    $('#name').html(queue[0]);
+	    if (queue.length > 0) {
+	      $('#name').html(queue[0]);
+	    } else {
+	      $('#name').html('Waiting...');
+	    }
 	  };
 
 	  // fake methods so things don't fall apart
