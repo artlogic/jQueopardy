@@ -22,14 +22,18 @@ staticServer.listen(port, function() {
 var everyone = nowjs.initialize(staticServer);
 
 // game data
+require.paths.unshift('.');
 var game1 = require('game1'),
     game2 = require('game2');
 
 // this is a little silly - makes it easy to cheat - but good enough
 // for now
-everyone.now.games = {game1.gameid: game1.gamedata, game2.gameid: game2.gamedata};
+everyone.now.games = {};
+everyone.now.games[game1.gameid] = game1.gamedata;
+everyone.now.games[game2.gameid] = game2.gamedata;
 everyone.now.currentGame = game1.gameid;
 everyone.now.currentQuestion = undefined;
+everyone.now.currentUser = undefined;
 
 // global state
 var users = {};
